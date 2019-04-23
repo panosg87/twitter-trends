@@ -14,7 +14,7 @@ db = client['twitter-data']
 def hashtags():
     COLLECTION = 'hashtag'
     col = db[COLLECTION]
-    return flask.Response(response=list(col.find()),
+    return flask.Response(response=list(col.find({}, {'_id': False})),
                           status=200,
                           mimetype='application/json')
 
@@ -23,7 +23,7 @@ def hashtags():
 def hashtags_per_source():
     COLLECTION = 'hashtag-per-source'
     col = db[COLLECTION]
-    return flask.Response(response=list(col.find()),
+    return flask.Response(response=list(col.find({}, {'_id': False})),
                           status=200,
                           mimetype='application/json')
 
@@ -32,7 +32,7 @@ def hashtags_per_source():
 def hashtags_per_lang():
     COLLECTION = 'hashtag-per-lang'
     col = db[COLLECTION]
-    return flask.Response(response=list(col.find()),
+    return flask.Response(response=list(col.find({}, {'_id': False})),
                           status=200,
                           mimetype='application/json')
 
