@@ -10,11 +10,11 @@ def calculate(client, db, source_collection, target_collection, trend_type,
     """Calculate the trends and store the information.
 
     Args:
-        db (str):
-        source_collection (str):
-        target_collection (str):
-        trend_type (str):
-        extras (dict):
+        db (str): database name.
+        source_collection (str): collection name of the source.
+        target_collection (str): collection name of the target.
+        trend_type (str): tyoe of trend.
+        extras (dict): extra information for each of the trend calculations.
     """
     # Fail in case the class is not implemented.
     cls = factory(trend_type)

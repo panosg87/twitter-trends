@@ -58,7 +58,7 @@ class BaseHashtagAggregation(BaseHashtag):
         sorting.
 
         Returns:
-            (pd.Series)
+            (pd.Series): top n values for this column.
         """
         return self.df.groupby(
             self.column
@@ -68,11 +68,11 @@ class BaseHashtagAggregation(BaseHashtag):
         """Calculate and return a trend.
 
         Args:
-            hashtags_top_n (int):
-            column_top_n (int):
+            hashtags_top_n (int): top n hashtags to show.
+            column_top_n (int): top n column key to show.
 
         Returns:
-            trends (dict):
+            trends (dict)
         """
         trend = {}
 

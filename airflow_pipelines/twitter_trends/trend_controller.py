@@ -3,13 +3,13 @@ def controller(trend_obj, extra):
     trend instance with the appropriate input.
 
     Args:
-        trend_obj
-        extra (dict):
+        trend_obj (base_hashtag.BaseHashtag): an object of one of the
+            subclasses.
+        extra (dict): extra information for each trend object.
 
     Returns:
-
+        (dict): returns the result of the trends calculated.
     """
-
     if trend_obj.name == 'hashtag':
 
         return trend_obj.trend(hashtag_top_n=extra.get('hashtag_top_n', 10))

@@ -11,10 +11,10 @@ def factory(trend_type):
     """Factory function, responsible for returning different classes of trends.
 
     Args;
-        trend_type (str):
+        trend_type (str): the type of class.
 
     Returnds:
-        cls ()
+        cls (base_hashtags.BaseHashtag): a subclass of this base class.
     """
     try:
         cls = TREND_MAP[trend_type]
