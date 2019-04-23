@@ -26,6 +26,6 @@ resource "aws_security_group" "twitter-trends" {
 resource "aws_instance" "main" {
   ami           = "ami-08660f1c6fb6b01e7"
   instance_type = "t2.large"
-  key_name   = "twitter-test"
+  key_name   = ""
   security_groups = ["twitter-trends"]
 }
