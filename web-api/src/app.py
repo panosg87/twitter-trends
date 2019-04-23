@@ -8,7 +8,7 @@ client = MongoClient()
 db = client['twitter-data']
 
 
-@app.route("/hashtags", methods=['GET'])
+@app.route("/hashtag", methods=['GET'])
 def hashtags():
     COLLECTION = 'hashtag'
     col = db[COLLECTION]
@@ -17,7 +17,7 @@ def hashtags():
                           mimetype='application/json')
 
 
-@app.route("/hashtags_per_source", methods=['GET'])
+@app.route("/hashtag_per_source", methods=['GET'])
 def hashtags_per_source():
     COLLECTION = 'hashtag-per-source'
     col = db[COLLECTION]
@@ -26,7 +26,7 @@ def hashtags_per_source():
                           mimetype='application/json')
 
 
-@app.route("/hashtags_per_lang", methods=['GET'])
+@app.route("/hashtag_per_lang", methods=['GET'])
 def hashtags_per_lang():
     COLLECTION = 'hashtag-per-lang'
     col = db[COLLECTION]
