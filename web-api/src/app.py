@@ -1,21 +1,38 @@
+import flask
 from flask import Flask
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
+client = MongoClient()
+db = client['twitter-data']
 
-@app.route("/hashtags")
+
+@app.route("/hashtags", methods=['GET'])
 def hashtags():
-    return "Hashtag"
+    COLLECTION = 'hashtag'
+    col = db[COLLECTION]
+    return flask.Response(response=list(col.find()),
+                          status=200,
+                          mimetype='application/json')
 
 
-@app.route("/hashtags_per_source")
+@app.route("/hashtags_per_source", methods=['GET'])
 def hashtags_per_source():
-    return "Hashtag per source"
+    COLLECTION = 'hashtag-per-source'
+    col = db[COLLECTION]
+    return flask.Response(response=list(col.find()),
+                          status=200,
+                          mimetype='application/json')
 
 
-@app.route("/hashtags_per_lang")
+@app.route("/hashtags_per_lang", methods=['GET'])
 def hashtags_per_lang():
-    return "Hashtag per lang"
+    COLLECTION = 'hashtag-per-lang'
+    col = db[COLLECTION]
+    return flask.Response(response=list(col.find()),
+                          status=200,
+                          mimetype='application/json')
 
 
 if __name__ == "__main__":
