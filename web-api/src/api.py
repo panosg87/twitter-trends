@@ -15,7 +15,7 @@ def hashtags():
     COLLECTION = 'hashtag'
     col = db[COLLECTION]
     return flask.Response(
-        response=jspn.dumps(list(col.find({}, {'_id': False}))),
+        response=json.dumps(list(col.find({}, {'_id': False}))),
         status=200,
         mimetype='application/json'
     )
