@@ -50,7 +50,7 @@ class Hashtag(BaseHashtag):
         """
         trends = self.count_hashtags(self.df.hashtags.values, hashtag_top_n)
         return {
-            'count': pd.Series(list(trends.values())).sum(),
+            'count': int(pd.Series(list(trends.values())).sum()),
             'trends': trends
         }
 
