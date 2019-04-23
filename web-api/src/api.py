@@ -14,27 +14,32 @@ db = client['twitter-data']
 def hashtags():
     COLLECTION = 'hashtag'
     col = db[COLLECTION]
-    return flask.Response(response=list(col.find({}, {'_id': False})),
-                          status=200,
-                          mimetype='application/json')
+    return flask.Response(
+        response=jspn.dumps(list(col.find({}, {'_id': False}))),
+        status=200,
+        mimetype='application/json'
+    )
 
 
 @app.route("/hashtag_per_source", methods=['GET'])
 def hashtags_per_source():
     COLLECTION = 'hashtag-per-source'
     col = db[COLLECTION]
-    return flask.Response(response=list(col.find({}, {'_id': False})),
-                          status=200,
-                          mimetype='application/json')
+    return flask.Response(
+        response=json.dumps(list(col.find({}, {'_id': False}))),
+        status=200,
+        mimetype='application/json')
 
 
 @app.route("/hashtag_per_lang", methods=['GET'])
 def hashtags_per_lang():
     COLLECTION = 'hashtag-per-lang'
     col = db[COLLECTION]
-    return flask.Response(response=list(col.find({}, {'_id': False})),
-                          status=200,
-                          mimetype='application/json')
+    return flask.Response(
+        response=json.dumps(list(col.find({}, {'_id': False}))),
+        status=200,
+        mimetype='application/json'
+    )
 
 
 if __name__ == "__main__":
