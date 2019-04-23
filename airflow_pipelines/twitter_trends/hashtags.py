@@ -2,6 +2,8 @@ __all__ = ['Hashtag', 'HashtagPerSource', 'HashtagPerLang']
 
 import re
 
+import pandas as pd
+
 from twitter_trends.base_hashtag import BaseHashtag, BaseHashtagAggregation
 from twitter_trends.utils import hashtag_counts
 
@@ -48,7 +50,7 @@ class Hashtag(BaseHashtag):
         """
         trends = self.count_hashtags(self.df.hashtags.values, hashtag_top_n)
         return {
-            'count': trends.sum(),
+            'count': pd.Series(list(trends.values())).sum(),
             'trends': trends
         }
 
