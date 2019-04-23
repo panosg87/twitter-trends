@@ -33,8 +33,8 @@ class Hashtag(BaseHashtag):
             'created_at': tweet['created_at'],
             # MongoDB doesn't like dot in the key.
             'hashtags': [
-                (ht['text'].replace('.', '_')
-                 for ht in tweet['entities']['hashtags'])
+                 ht['text'].replace('.', '_')
+                 for ht in tweet['entities']['hashtags']
             ]
         }
 
@@ -82,8 +82,8 @@ class HashtagPerSource(BaseHashtagAggregation):
             'created_at': tweet['created_at'],
             self.column: re.sub(clean, '', tweet[self.column]),
             'hashtags': [
-                (ht['text'].replace('.', '_')
-                 for ht in tweet['entities']['hashtags'])
+                 ht['text'].replace('.', '_')
+                 for ht in tweet['entities']['hashtags']
             ]
         }
 
@@ -114,7 +114,7 @@ class HashtagPerLang(BaseHashtagAggregation):
             'created_at': tweet['created_at'],
             self.column: tweet[self.column],
             'hashtags': [
-                (ht['text'].replace('.', '_')
-                 for ht in tweet['entities']['hashtags'])
+                 ht['text'].replace('.', '_')
+                 for ht in tweet['entities']['hashtags']
             ]
         }
