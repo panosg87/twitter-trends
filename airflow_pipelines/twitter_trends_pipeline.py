@@ -73,7 +73,7 @@ with DAG('twitter-trends', default_args=default_args) as dag:
         task_id='parse_data',
         python_callable=parse_tweet_data,
         op_kwargs=parsing_kwargs,
-        execution_timeout=datetime.timedelta(hours=3)
+        execution_timeout=datetime.timedelta(hours=5)
     )
 
     calc_hashtags = PythonOperator(

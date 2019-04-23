@@ -1,4 +1,14 @@
 def controller(trend_obj, extra):
+    """Responsible for the calculation of the trends by providing each
+    trend instance with the appropriate input.
+
+    Args:
+        trend_obj
+        extra (dict):
+
+    Returns:
+
+    """
 
     if trend_obj.name == 'hashtag':
 

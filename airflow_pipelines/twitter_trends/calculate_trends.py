@@ -7,7 +7,15 @@ from twitter_trends.utils import get_tweets
 
 def calculate(client, db, source_collection, target_collection, trend_type,
               extras):
+    """Calculate the trends and store the information.
 
+    Args:
+        db (str):
+        source_collection (str):
+        target_collection (str):
+        trend_type (str):
+        extras (dict):
+    """
     # Fail in case the class is not implemented.
     cls = factory(trend_type)
 

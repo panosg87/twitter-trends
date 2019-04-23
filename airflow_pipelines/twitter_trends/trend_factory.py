@@ -8,6 +8,14 @@ TREND_MAP = {
 
 
 def factory(trend_type):
+    """Factory function, responsible for returning different classes of trends.
+
+    Args;
+        trend_type (str):
+
+    Returnds:
+        cls ()
+    """
     try:
         cls = TREND_MAP[trend_type]
     except:
