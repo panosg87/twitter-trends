@@ -13,7 +13,7 @@ def calculate(client, db, source_collection, target_collection, trend_type,
         db (str): database name.
         source_collection (str): collection name of the source.
         target_collection (str): collection name of the target.
-        trend_type (str): tyoe of trend.
+        trend_type (str): type of trend.
         extras (dict): extra information for each of the trend calculations.
     """
     # Fail in case the class is not implemented.
