@@ -46,5 +46,6 @@ mkdir ~/airflow/dags
 cp -r ~/twitter-trends/airflow_pipelines/twitter_trends ~/airflow/dags/
 cp ~/twitter-trends/airflow_pipelines/twitter_trends_pipeline.py ~/airflow/dags/
 
-nohup airflow scheduler >> ~/airflow/logs/scheduler.logs &
-nohup airflow webserver -p 8080 $* >> ~/airflow/logs/webserver.logs &
+#nohup airflow scheduler >> ~/airflow/logs/scheduler.logs &
+#nohup airflow webserver -p 8080 $* >> ~/airflow/logs/webserver.logs &
+#python3.6 ~/twitter-trends/web-api/src/api.py
