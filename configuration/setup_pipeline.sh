@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 sudo apt-get update -y
 sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
 
