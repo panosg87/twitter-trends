@@ -13,7 +13,6 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 git clone https://github.com/panosg87/twitter-trends.git
 
 cd twitter-trends
-git checkout improvements
 
 export \
   TWITTER_CONSUMER_KEY=$1 \
