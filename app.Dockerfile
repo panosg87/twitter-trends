@@ -11,7 +11,7 @@ RUN apt-get update -q && apt-get install -yq \
     git \
     && apt-get autoclean -y
 
-RUN pip3 install apache-airflow
+RUN pip3 install apache-airflow==1.10.3
 
 WORKDIR $AIRFLOW_HOME/
 
@@ -22,6 +22,8 @@ RUN mkdir dags
 
 COPY start_airflow.sh .
 RUN chmod +x start_airflow.sh
+
+EXPOSE 8080
 
 CMD ./start_airflow.sh $AIRFLOW_HOME \
 $TWITTER_CONSUMER_KEY $TWITTER_CONSUMER_SECRET \
