@@ -10,13 +10,17 @@ from twitter_trends import calculate_trends
 from twitter_trends.parse_data import parse_tweet_data
 
 HOST = os.environ.get('MONGODB_HOST')
-HRS_BEFORE = 72
+HRS_BEFORE = int(Variable.get('HRS_BEFORE', default_var=72))
+START_DT = datetime.datetime.now().replace(hour=0,
+                                           minute=0,
+                                           second=0,
+                                           microsecond=0)
 
 client = MongoClient(host=HOST)
 
 default_args = {
     'owner': 'panosg',
-    'start_date': datetime.datetime(2019, 4, 23),
+    'start_date': START_DT,
     'retries': 1,
     'retry_delay': datetime.timedelta(seconds=20),
     'client': client,
