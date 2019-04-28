@@ -1,7 +1,7 @@
 provider "aws" {
-  access_key = ""
-  secret_key = ""
-  region     = "eu-west-1"
+  access_key = "${var.AWS_ACCESS_KEY}"
+  secret_key = "${var.AWS_SECRET_KEY}"
+  region     = "${var.AWS_REGION}"
 }
 
 resource "aws_security_group" "twitter-trends" {
@@ -12,7 +12,7 @@ resource "aws_security_group" "twitter-trends" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [""]
+    cidr_blocks = ["${var.MY_IP}"]
   }
 
   egress {
@@ -25,7 +25,25 @@ resource "aws_security_group" "twitter-trends" {
 
 resource "aws_instance" "main" {
   ami           = "ami-08660f1c6fb6b01e7"
-  instance_type = "t2.large"
-  key_name   = ""
+  instance_type = "m5.large"
+  key_name   = "twitter-test"
   security_groups = ["twitter-trends"]
+
+  provisioner "file" {
+    source = "setup_docker.sh"
+    destination = "setup_docker.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x setup_docker.sh",
+      "sudo ./setup_docker.sh ${var.TWITTER_CONSUMER_KEY} ${var.TWITTER_CONSUMER_SECRET} ${var.TWITTER_OAUTH_TOKEN} ${var.TWITTER_OAUTH_TOKEN_SECRET}"
+    ]
+  }
+
+  connection {
+    user = "ubuntu"
+    private_key = "${file("~/Desktop/twitter-test.pem")}"
+  }
+
 }
