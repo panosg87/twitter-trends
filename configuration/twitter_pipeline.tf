@@ -26,7 +26,7 @@ resource "aws_security_group" "twitter-trends" {
 resource "aws_instance" "main" {
   ami           = "ami-08660f1c6fb6b01e7"
   instance_type = "m5.large"
-  key_name   = "twitter-test"
+  key_name   = "${var.AWS_KEY_NAME}"
   security_groups = ["twitter-trends"]
 
   provisioner "file" {
@@ -42,7 +42,7 @@ resource "aws_instance" "main" {
 
   connection {
     user = "ubuntu"
-    private_key = "${file("~/Desktop/twitter-test.pem")}"
+    private_key = "${file("${AWS_PRIVATE_KEY}")}"
   }
 
 }

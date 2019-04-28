@@ -3,6 +3,8 @@ variable "AWS_SECRET_KEY" {}
 variable "AWS_REGION" {
     default = "eu-west-1"
 }
+variable "AWS_KEY_NAME" {}
+variable "AWS_PRIVATE_KEY" {}
 
 variable "MY_IP" {}
 
