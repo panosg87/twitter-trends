@@ -42,7 +42,7 @@ resource "aws_instance" "main" {
 
   connection {
     user = "ubuntu"
-    private_key = "${file("${AWS_PRIVATE_KEY}")}"
+    private_key = "${file("${var.AWS_PRIVATE_KEY}")}"
   }
 
 }
