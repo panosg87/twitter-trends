@@ -18,6 +18,12 @@ services:
     depends_on:
       - 'web-api'
       - 'db'
+    environment:
+      MONGODB_HOST: 'db'
+      TWITTER_CONSUMER_KEY: $TWITTER_CONSUMER_KEY
+      TWITTER_CONSUMER_SECRET: $TWITTER_CONSUMER_SECRET
+      TWITTER_OAUTH_TOKEN: $TWITTER_OAUTH_TOKEN
+      TWITTER_OAUTH_TOKEN_SECRET: $TWITTER_OAUTH_TOKEN_SECRET
 
   web-api:
     build:
@@ -25,3 +31,5 @@ services:
       context: '.'
     ports:
       - '5000:5000'
+    environment:
+      MONGODB_HOST: 'db'

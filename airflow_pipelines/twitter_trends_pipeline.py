@@ -28,6 +28,8 @@ parsing_kwargs = {
     'consumer_secret': Variable.get('TWITTER_CONSUMER_SECRET'),
     'oauth_token': Variable.get('TWITTER_OAUTH_TOKEN'),
     'oauth_token_secret': Variable.get('TWITTER_OAUTH_TOKEN_SECRET'),
+    'client': client,
+    'db': 'twitter-data',
     'collection': 'raw-tweets',
     'state_collection': 'state',
     'hrs_before': HRS_BEFORE,
@@ -36,6 +38,8 @@ parsing_kwargs = {
 
 hashtags_kwargs = {
     'trend_type': 'hashtag',
+    'client': client,
+    'db': 'twitter-data',
     'source_collection': 'raw-tweets',
     'target_collection': 'hashtag',
     'extras': {
@@ -45,6 +49,8 @@ hashtags_kwargs = {
 
 hashtags_per_source_kwargs = {
     'trend_type': 'hashtag_per_source',
+    'client': client,
+    'db': 'twitter-data',
     'source_collection': 'raw-tweets',
     'target_collection': 'hashtag-per-source',
     'extras': {
@@ -55,6 +61,8 @@ hashtags_per_source_kwargs = {
 
 hashtags_per_lang_kwargs = {
     'trend_type': 'hashtag_per_lang',
+    'client': client,
+    'db': 'twitter-data',
     'source_collection': 'raw-tweets',
     'target_collection': 'hashtag-per-lang',
     'extras': {
@@ -64,8 +72,8 @@ hashtags_per_lang_kwargs = {
 }
 
 calc_dags_payload = [
-    ('calculate_hashtags', hashtags_kwargs)
-    ('calculate_hashtags_per_source', hashtags_per_source_kwargs)
+    ('calculate_hashtags', hashtags_kwargs),
+    ('calculate_hashtags_per_source', hashtags_per_source_kwargs),
     ('calculate_hashtags_per_lang', hashtags_per_lang_kwargs)
 ]
 

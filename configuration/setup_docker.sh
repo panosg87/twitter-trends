@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+sudo apt-get update -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -14,10 +16,4 @@ git clone https://github.com/panosg87/twitter-trends.git
 
 cd twitter-trends
 
-export \
-  TWITTER_CONSUMER_KEY=$1 \
-  TWITTER_CONSUMER_SECRET=$2 \
-  TWITTER_OAUTH_TOKEN=$3 \
-  TWITTER_OAUTH_TOKEN_SECRET=$4
-
-sudo -E docker-compose up
+sudo -E docker-compose up -d

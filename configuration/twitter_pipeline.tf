@@ -36,8 +36,7 @@ resource "aws_instance" "main" {
 
   provisioner "remote-exec" {
     inline = [
-      "chmod +x setup_docker.sh",
-      "sudo ./setup_docker.sh ${var.TWITTER_CONSUMER_KEY} ${var.TWITTER_CONSUMER_SECRET} ${var.TWITTER_OAUTH_TOKEN} ${var.TWITTER_OAUTH_TOKEN_SECRET}"
+      "sudo chmod +x setup_docker.sh", "sudo ./setup_docker.sh"
     ]
   }
 
